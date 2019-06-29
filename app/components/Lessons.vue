@@ -15,14 +15,13 @@
 
 <script>
 import * as http from "tns-core-modules/http"
+import LessonsService from "@/servicios/LessonsService"
+
+const lessonsService = new LessonsService()
 
   export default {
     mounted() {
-        // http.getJSON("https://pokeapi.co/api/v2/pokemon/?limit=20").then(result => {
-        //     return result.results
-        // }, error => {
-        //     console.log(error);
-        // })
+        // lessonsService.load()
         // .then(r => {
         //   this.lessons = r
         // })
@@ -31,41 +30,41 @@ import * as http from "tns-core-modules/http"
       return {
         back: 'Atrás',
         lessons: [{
-          name: 'Lección 1',
-          chapters: [{
-            name: 'Capítulo 1',
+            name: 'Lección 1',
+            chapters: [{
+              name: 'Capítulo 1',
+            },
+            {
+              name: 'Capítulo 2',
+            },
+            {
+              name: 'Capítulo 3',
+            }]
           },
           {
-            name: 'Capítulo 2',
+            name: 'Lección 2',
+            chapters: [{
+              name: 'Capítulo 1',
+            },
+            {
+              name: 'Capítulo 2',
+            },
+            {
+              name: 'Capítulo 3',
+            }]
           },
           {
-            name: 'Capítulo 3',
+            name: 'Lección 3',
+            chapters: [{
+              name: 'Capítulo 1',
+            },
+            {
+              name: 'Capítulo 2',
+            },
+            {
+              name: 'Capítulo 3',
+            }]
           }]
-        },
-        {
-          name: 'Lección 2',
-          chapters: [{
-            name: 'Capítulo 1',
-          },
-          {
-            name: 'Capítulo 2',
-          },
-          {
-            name: 'Capítulo 3',
-          }]
-        },
-        {
-          name: 'Lección 3',
-          chapters: [{
-            name: 'Capítulo 1',
-          },
-          {
-            name: 'Capítulo 2',
-          },
-          {
-            name: 'Capítulo 3',
-          }]
-        }]
       }
     },
     methods: {
