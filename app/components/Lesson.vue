@@ -1,10 +1,16 @@
 <template>
     <Page>
-        <ActionBar title="Lección">
-          <NavigationButton :text="back" android.systemIcon="ic_menu_back" @tap="$navigateBack"/>
+        <ActionBar :title="lesson.name">
+            <NavigationButton text="Atrás" android.systemIcon="ic_menu_back"
+                @tap="$navigateBack" />
         </ActionBar>
         <AbsoluteLayout ref="rootLayout">
-          <Label :text="lesson.name" />
+            <ListView for="chapter in lesson.chapters" @itemTap="onItemTap"
+                left="10" top="10" height="97%" width="100%" marginBottom="48">
+                <v-template>
+                    <Label :text="chapter.name" @tap="goToComponent(chapter)" />
+                </v-template>
+            </ListView>
         </AbsoluteLayout>
     </Page>
 </template>
@@ -21,21 +27,25 @@
             };
         },
         methods: {
-
+            goToComponent(chapter) {
+                this.$navigateTo(this.$routes.Chapter, {
+                    props: {
+                        chapter: chapter
+                    }
+                });
+            }
         }
     };
 </script>
 
 <style scoped>
-    .image {
-
+    ActionBar {
+        background-color: #53ba82;
+        color: #ffffff;
     }
 
-    .label {
-        margin-top: 20;
-    }
-
-    .button {
-        margin-top: 20;
+    ListView Label {
+        height: 48;
+        min-height: 48;
     }
 </style>

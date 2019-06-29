@@ -1,11 +1,13 @@
 import Main from '../components/Main'
-import Modules from '../components/Modules'
+import Lessons from '../components/Lessons'
 import Lesson from '../components/Lesson'
+import Chapter from '../components/Chapter'
 
 const routes = {
     Main,
-    Modules,
-    Lesson
+    Lessons,
+    Lesson,
+    Chapter
 }
 
 export default routes

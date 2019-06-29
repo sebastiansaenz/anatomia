@@ -4,7 +4,7 @@
             <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center">
                 <Image class="image" src="res://icon" stretch="none" />
                 <Label class="label" :text="msg" />
-                <Button class="button" :text="textButton" @tap="$navigateTo($routes.Modules)" />
+                <Button class="button" :text="textButton" @tap="goToComponent" />
             </FlexboxLayout>
         </GridLayout>
     </Page>
@@ -19,7 +19,9 @@
             };
         },
         methods: {
-
+            goToComponent() {
+                this.$navigateTo(this.$routes.Lessons)
+            }
         }
     };
 </script>
