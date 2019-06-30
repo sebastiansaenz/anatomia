@@ -21,50 +21,15 @@ const lessonsService = new LessonsService()
 
   export default {
     mounted() {
-        // lessonsService.load()
-        // .then(r => {
-        //   this.lessons = r
-        // })
+        lessonsService.load()
+        .then(r => {
+          this.lessons = r
+        })
     },
     data() {
       return {
         back: 'Atrás',
-        lessons: [{
-            name: 'Lección 1',
-            chapters: [{
-              name: 'Capítulo 1',
-            },
-            {
-              name: 'Capítulo 2',
-            },
-            {
-              name: 'Capítulo 3',
-            }]
-          },
-          {
-            name: 'Lección 2',
-            chapters: [{
-              name: 'Capítulo 1',
-            },
-            {
-              name: 'Capítulo 2',
-            },
-            {
-              name: 'Capítulo 3',
-            }]
-          },
-          {
-            name: 'Lección 3',
-            chapters: [{
-              name: 'Capítulo 1',
-            },
-            {
-              name: 'Capítulo 2',
-            },
-            {
-              name: 'Capítulo 3',
-            }]
-          }]
+        lessons: []
       }
     },
     methods: {
