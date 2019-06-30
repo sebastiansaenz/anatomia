@@ -7,6 +7,6 @@ export default class LessonsService {
             return r.data
         }, e => {
             console.log(e);
-        });
+        })
     }
 }
