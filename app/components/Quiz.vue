@@ -3,15 +3,17 @@
         <ActionBar title="Quiz">
           <NavigationButton :text="back" android.systemIcon="ic_menu_back" @tap="goBack"/>
         </ActionBar>
-        <StackLayout>
-            <Label class="h2 m-y-15 m-x-15" :text="questions[questionNumber].name" />
-            <ListView class="m-l-10 m-y-15 list-group" for="answer in answers" @itemTap="selectAnswer" width="100%">
-                <v-template>
-                    <Label :text="answer.name" class="list-group-item"/>
-                </v-template>
-            </ListView>
-            <Button :text="buttonText" :class="buttonClass" @tap="nextQuestion"/>
-        </StackLayout>
+        <DockLayout stretchLastChild="false">
+            <StackLayout dock="top">
+                <Label class="h2 m-y-15 m-x-15" :text="questions[questionNumber].name" />
+                <ListView class="m-l-10 m-y-15 list-group" for="answer in answers" @itemTap="selectAnswer" width="100%">
+                    <v-template>
+                        <Label :text="answer.name" class="list-group-item"/>
+                    </v-template>
+                </ListView>
+            </StackLayout>
+            <Button dock="bottom" :text="buttonText" :class="buttonClass" @tap="nextQuestion"/>
+        </DockLayout>
     </Page>
 </template>
 
@@ -34,7 +36,7 @@
                 buttonText: 'Siguiente',
                 buttonClass: 'btn btn-gray btn-rounded-sm m-x-10 m-y-15',
                 questionNumber: 0,
-                puntajes: [0]
+                puntajes: []
             };
         },
         methods: {

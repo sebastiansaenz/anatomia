@@ -3,19 +3,19 @@
         <ActionBar :title="chapter.name">
           <NavigationButton text="Atrás" android.systemIcon="ic_menu_back" @tap="goBack"/>
         </ActionBar>
-        <ScrollView>
-            <StackLayout>
-                <FlexboxLayout justifyContent="center" backgroundColor="#f5f5f5">
-                    <Image :src="chapter.screens[screenNumber].image_url" stretch="none" height="200" class="m-t-15"/>
+        <DockLayout stretchLastChild="false">
+            <StackLayout dock="top">
+                <FlexboxLayout justifyContent="center" alignItems="center" height="40%">
+                    <Image :src="chapter.screens[screenNumber].image_url" stretch="none"/>
                 </FlexboxLayout>
 
                 <Label class="hr-light m-b-15"/>
 
-                <Label :text="chapter.screens[screenNumber].text" class="m-x-10 m-y-15"/>
+                <Label :text="chapter.screens[screenNumber].text" class="m-x-15 m-y-15"/>
 
-                <Button :text="buttonText" :class="buttonClass" @tap="nextScreen"/>
             </StackLayout>
-        </ScrollView>
+            <Button dock="bottom" height="50" :text="buttonText" :class="buttonClass" @tap="nextScreen"/>
+        </DockLayout>
     </Page>
 </template>
 

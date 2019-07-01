@@ -3,7 +3,7 @@
         <GridLayout columns="*" rows="*">
             <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center">
                 <Image class="image" src="res://icon" stretch="none" />
-                <Label class="label" :text="msg" />
+                <Label class="h2 label" :text="msg" />
                 <Button class="button" :text="textButton" @tap="goToLessons" />
                 <ActivityIndicator class="m-t-15" :busy="loading" />
             </FlexboxLayout>
