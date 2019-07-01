@@ -14,34 +14,26 @@
 </template>
 
 <script>
-import * as http from "tns-core-modules/http"
-import LessonsService from "@/servicios/LessonsService"
-
-const lessonsService = new LessonsService()
-
-  export default {
-    mounted() {
-        lessonsService.load()
-        .then(r => {
-          this.lessons = r
-        })
-    },
-    data() {
-      return {
-        back: 'Atrás',
+    export default {
+      props: {
         lessons: []
-      }
-    },
-    methods: {
-      goToComponent(event) {
-        this.$navigateTo(this.$routes.Lesson, {
-          props: {
-            lesson: event.item
-          }
-        })
+      },
+      data() {
+        return {
+          back: 'Atrás',
+          lessons: []
+        }
+      },
+      methods: {
+        goToComponent(event) {
+          this.$navigateTo(this.$routes.Lesson, {
+            props: {
+              lesson: event.item
+            }
+          })
+        }
       }
     }
-  }
 </script>
 
 <style scoped>

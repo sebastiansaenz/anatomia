@@ -4,23 +4,53 @@
             <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center">
                 <Image class="image" src="res://icon" stretch="none" />
                 <Label class="label" :text="msg" />
-                <Button class="button" :text="textButton" @tap="goToComponent" />
+                <Button class="button" :text="textButton" @tap="goToLessons" />
+                <ActivityIndicator class="m-t-15" :busy="loading" />
             </FlexboxLayout>
         </GridLayout>
     </Page>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
+
     export default {
+        computed: {
+            ...mapState([
+                'lessons'
+            ])
+        },
         data() {
             return {
                 msg: "Aprende anatomía",
-                textButton: "Comenzar"
+                textButton: "Comenzar",
+                loading: false
             };
         },
         methods: {
-            goToComponent() {
-                this.$navigateTo(this.$routes.Lessons)
+            ...mapActions([
+                'loadLessons'
+            ]),
+            goToLessons() {
+                if (this.lessons.length == 0) {
+                    this.loading = true
+                    this.loadLessons()
+                    .then(r => {
+                        this.loading = false
+                        this.$navigateTo(this.$routes.Lessons, {
+                            props: {
+                                lessons: this.lessons
+                            }
+                        })
+                    })
+                } else {
+                    this.$navigateTo(this.$routes.Lessons, {
+                        props: {
+                            lessons: this.lessons
+                        }
+                    })
+                }
             }
         }
     };
