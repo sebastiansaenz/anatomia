@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Aprende anatomía</string>
-    <string name="title_activity_kimera">Aprende anatomía</string>
+  <string name="_quizcomplete_button_backtolesson_OzjKQ">"Volver a la lección"</string>
+  <string name="_general_button_finish_2fQ98P">"Finalizar"</string>
+  <string name="_general_button_next_2x60J7">"Siguiente"</string>
+  <string name="_actionbar_back_Z25HWO2">"Atrás"</string>
+  <string name="_main_button_start_ZVAmwy">"Comenzar"</string>
+  <string name="_main_title_Zi8236">"Aprende anatomía"</string>
+  <string name="_app_name_1k3Sbz">"Aprende anatomía"</string>
+  <string name="app_name">"Aprende anatomía"</string>
+  <string name="title_activity_kimera">"Aprende anatomía"</string>
 </resources>

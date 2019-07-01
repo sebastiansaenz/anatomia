@@ -3,7 +3,7 @@
         <GridLayout columns="*" rows="*">
             <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center">
                 <Label class="label" :text="puntaje" />
-                <Button class="button" :text="textButton" @tap="goToQuiz" />
+                <Button class="button" :text="$t('quizcomplete:button:backtolesson')" @tap="goToQuiz" />
             </FlexboxLayout>
         </GridLayout>
     </Page>
@@ -11,12 +11,11 @@
 
 <script>
     export default {
-        props: ['puntaje'],
+        props: ['score'],
         data() {
             return {
-                msg: "Aprende anatomía",
-                textButton: "Volver a la lección"
-            };
+
+            }
         },
         methods: {
             goToQuiz() {
@@ -27,9 +26,6 @@
 </script>
 
 <style scoped>
-    .image {
-
-    }
 
     ActionBar {
         background-color: #53ba82;

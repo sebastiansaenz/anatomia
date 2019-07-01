@@ -1,0 +1,11 @@
+{   
+    "app.name": "Learn anatomy",
+    "main:title": "Learn anatomy",
+    "main:button:start": "Start",
+    "lessons:title:lessons": "Lessons",
+    "actionbar:back": "Back",
+    "general:button:next": "Next",
+    "general:button:finish": "Finish",
+    "quiz:button:quiz": "Quiz!",
+    "quizcomplete:button:backtolesson": "Back to the lesson"
+}

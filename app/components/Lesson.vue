@@ -1,7 +1,7 @@
 <template>
     <Page>
         <ActionBar :title="lesson.name">
-            <NavigationButton text="Atrás" android.systemIcon="ic_menu_back"
+            <NavigationButton :text="$t('actionbar:back')" android.systemIcon="ic_menu_back"
                 @tap="$navigateBack" />
         </ActionBar>
         <AbsoluteLayout ref="rootLayout">
@@ -22,9 +22,8 @@
         },
         data() {
             return {
-                msg: "Aprende anatomía",
-                textButton: "Comenzar"
-            };
+
+            }
         },
         methods: {
             goToComponent(chapter) {

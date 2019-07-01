@@ -1,0 +1,11 @@
+{
+    "app.name": "Aprenda anatomia",
+    "main:title": "Aprenda anatomia",
+    "main:button:start": "Começar",
+    "lessons:title:lessons": "Lições",
+    "actionbar:back": "Voltar",
+    "general:button:next": "Seguinte",
+    "general:button:finish": "Terminar",
+    "quiz:button:quiz": "Quiz!",
+    "quizcomplete:button:backtolesson": "Voltar para a lição"
+}

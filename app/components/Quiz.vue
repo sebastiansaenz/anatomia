@@ -1,7 +1,7 @@
 <template>
     <Page>
         <ActionBar title="Quiz">
-          <NavigationButton :text="back" android.systemIcon="ic_menu_back" @tap="goBack"/>
+          <NavigationButton :text="$t('actionbar:back')" android.systemIcon="ic_menu_back" @tap="goBack"/>
         </ActionBar>
         <DockLayout stretchLastChild="false">
             <StackLayout dock="top">
@@ -12,7 +12,7 @@
                     </v-template>
                 </ListView>
             </StackLayout>
-            <Button dock="bottom" :text="buttonText" :class="buttonClass" @tap="nextQuestion"/>
+            <Button dock="bottom" :text="questionNumber == questions.length - 1 ? $t('general:button:finish') : $t('general:button:next')" :class="buttonClass" @tap="nextQuestion"/>
         </DockLayout>
     </Page>
 </template>
@@ -20,8 +20,8 @@
 <script>
     export default {
         computed: {
-            puntajesTotal() {
-                return this.puntajes.reduce((total, p) => total + p)
+            totalScore() {
+                return this.score.reduce((total, p) => total + p)
             },
             answers() {
                 return this.questions[this.questionNumber].answers
@@ -32,11 +32,9 @@
         },
         data() {
             return {
-                msg: "Quiz",
-                buttonText: 'Siguiente',
                 buttonClass: 'btn btn-gray btn-rounded-sm m-x-10 m-y-15',
                 questionNumber: 0,
-                puntajes: []
+                score: []
             };
         },
         methods: {
@@ -46,20 +44,19 @@
                 } else {
                     if (this.questionNumber == this.questions.length - 1) {
                         this.buttonClass = 'btn btn-gray btn-rounded-sm m-x-10 m-y-15'
-                        this.buttonText = 'Siguiente'
+                        this.buttonText = $t('general:button:next')
                     }
                     this.questionNumber--
                 }
             },
             nextQuestion() {
                 if (this.questionNumber == this.questions.length - 2) {
-                    this.buttonText = 'Finalizar'
                     this.buttonClass = 'btn btn-success btn-rounded-sm m-x-10 m-y-15'
                     this.questionNumber++
                 } else if (this.questionNumber == this.questions.length - 1) {
                     this.$navigateTo(this.$routes.QuizComplete, {
                         props: {
-                            puntaje: this.puntajesTotal
+                            score: this.totalScore
                         }
                     })
                 } else {
@@ -67,7 +64,7 @@
                 }
             },
             selectAnswer(event) {
-                console.log('hola')
+                
             }
         }
     };

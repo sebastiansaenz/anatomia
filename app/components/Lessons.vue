@@ -1,7 +1,7 @@
 <template>
     <Page>
-        <ActionBar title="Lecciones">
-          <NavigationButton :text="back" android.systemIcon="ic_menu_back" @tap="$navigateBack"/>
+        <ActionBar :title="$t('lessons:title:lessons')">
+          <NavigationButton :text="$t('actionbar:back')" android.systemIcon="ic_menu_back" @tap="$navigateBack"/>
         </ActionBar>
         <AbsoluteLayout ref="rootLayout">
           <ListView for="lesson in lessons" @itemTap="goToComponent" class="list-group" left="10" top="10" height="97%" width="100%" marginBottom="48">
@@ -20,8 +20,7 @@
       },
       data() {
         return {
-          back: 'Atrás',
-          lessons: []
+
         }
       },
       methods: {

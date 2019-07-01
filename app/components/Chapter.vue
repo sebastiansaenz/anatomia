@@ -1,7 +1,7 @@
 <template>
     <Page>
         <ActionBar :title="chapter.name">
-          <NavigationButton text="Atrás" android.systemIcon="ic_menu_back" @tap="goBack"/>
+          <NavigationButton :text="$t('actionbar:back')" android.systemIcon="ic_menu_back" @tap="goBack"/>
         </ActionBar>
         <DockLayout stretchLastChild="false">
             <StackLayout dock="top">
@@ -14,7 +14,7 @@
                 <Label :text="chapter.screens[screenNumber].text" class="m-x-15 m-y-15"/>
 
             </StackLayout>
-            <Button dock="bottom" height="50" :text="buttonText" :class="buttonClass" @tap="nextScreen"/>
+            <Button dock="bottom" height="50" :text="screenNumber == chapter.screens.length - 1 ? $t('quiz:button:quiz') : $t('general:button:next')" :class="buttonClass" @tap="nextScreen"/>
         </DockLayout>
     </Page>
 </template>
@@ -26,7 +26,6 @@
         },
         data() {
             return {
-                buttonText: 'Siguiente',
                 buttonClass: 'btn btn-gray btn-rounded-sm m-x-10 m-y-15',
                 screenNumber: 0
             }
@@ -45,7 +44,6 @@
             },
             nextScreen(event) {
                 if (this.screenNumber == this.chapter.screens.length - 2) {
-                    this.buttonText = 'Quiz!'
                     this.buttonClass = 'btn btn-success btn-rounded-sm m-x-10 m-y-15'
                     this.screenNumber++
                 } else if (this.screenNumber == this.chapter.screens.length - 1) {
