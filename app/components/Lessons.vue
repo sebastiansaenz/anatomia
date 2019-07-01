@@ -4,9 +4,9 @@
           <NavigationButton :text="back" android.systemIcon="ic_menu_back" @tap="$navigateBack"/>
         </ActionBar>
         <AbsoluteLayout ref="rootLayout">
-          <ListView for="lesson in lessons" @itemTap="goToComponent" left="10" top="10" height="97%" width="100%" marginBottom="48">
+          <ListView for="lesson in lessons" @itemTap="goToComponent" class="list-group" left="10" top="10" height="97%" width="100%" marginBottom="48">
             <v-template>
-              <Label :text="lesson.name" />
+              <Label :text="lesson.name" class="list-group-item" />
             </v-template>
           </ListView>
         </AbsoluteLayout>
@@ -48,9 +48,5 @@ const lessonsService = new LessonsService()
     ActionBar {
         background-color: #53ba82;
         color: #ffffff;
-    }
-    ListView Label {
-      height: 48;
-      min-height: 48;
     }
 </style>

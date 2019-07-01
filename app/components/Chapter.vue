@@ -1,17 +1,19 @@
 <template>
     <Page>
         <ActionBar :title="chapter.name">
-          <NavigationButton text="Atrás" android.systemIcon="ic_menu_back" @tap="$navigateBack"/>
+          <NavigationButton text="Atrás" android.systemIcon="ic_menu_back" @tap="goBack"/>
         </ActionBar>
         <ScrollView>
             <StackLayout>
-                <Image :src="chapter.screens[screenNumber].image_url" stretch="none" height="200" class="m-b-15" />
+                <FlexboxLayout justifyContent="center" backgroundColor="#f5f5f5">
+                    <Image :src="chapter.screens[screenNumber].image_url" stretch="none" height="200" class="m-t-15"/>
+                </FlexboxLayout>
 
-                <Label row="1" class="hr-light m-t-15 m-b-15"/>
+                <Label class="hr-light m-b-15"/>
 
-                <Label :text="chapter.screens[screenNumber].text" class="m-t-15 m-b-15"/>
+                <Label :text="chapter.screens[screenNumber].text" class="m-x-10 m-y-15"/>
 
-                <Button :text="buttonText" class="m-t-15 m-b-15" @tap="nextScreen"/>
+                <Button :text="buttonText" :class="buttonClass" @tap="nextScreen"/>
             </StackLayout>
         </ScrollView>
     </Page>
@@ -19,39 +21,39 @@
 
 <script>
     export default {
-        // props: {
-        //     chapter: {}
-        // },
+        props: {
+            chapter: {}
+        },
         data() {
             return {
                 buttonText: 'Siguiente',
-                chapter: {
-                    name: 'Capítulo',
-                    screens: [
-                        {
-                            text: 'Hola1',
-                            image_url: 'https://cdn0.iconfinder.com/data/icons/customicondesignoffice5/256/examples.png'
-                        },
-                        {
-                            text: 'Hola2',
-                            image_url: 'https://cdn0.iconfinder.com/data/icons/customicondesignoffice5/256/examples.png'
-                        },
-                        {
-                            text: 'Hola3',
-                            image_url: 'https://cdn0.iconfinder.com/data/icons/customicondesignoffice5/256/examples.png'
-                        }
-                    ]
-                },
+                buttonClass: 'btn btn-gray btn-rounded-sm m-x-10 m-y-15',
                 screenNumber: 0
             }
         },
         methods: {
-            nextScreen() {
+            goBack() {
+                if (this.screenNumber == 0) {
+                    this.$navigateBack()
+                } else {
+                    if (this.screenNumber == this.chapter.screens.length - 1) {
+                        this.buttonClass = 'btn btn-gray btn-rounded-sm m-x-10 m-y-15'
+                        this.buttonText = 'Siguiente'
+                    }
+                    this.screenNumber--
+                }
+            },
+            nextScreen(event) {
                 if (this.screenNumber == this.chapter.screens.length - 2) {
                     this.buttonText = 'Quiz!'
+                    this.buttonClass = 'btn btn-success btn-rounded-sm m-x-10 m-y-15'
                     this.screenNumber++
                 } else if (this.screenNumber == this.chapter.screens.length - 1) {
-                    this.$navigateTo(this.$routes.Quiz)
+                    this.$navigateTo(this.$routes.Quiz, {
+                        props: {
+                            questions: this.chapter.questions
+                        }
+                    })
                 } else {
                     this.screenNumber++
                 }
@@ -66,8 +68,13 @@
         color: #ffffff;
     }
 
-    ListView Label {
-        height: 48;
-        min-height: 48;
+    .btn-gray {
+        background-color: #f5f5f5;
+        color: black;
+    }
+
+    .btn-success {
+        background-color: #52b82a;
+        color: #ffffff;
     }
 </style>

@@ -1,5 +1,4 @@
 var http = require('http')
-
 export default class LessonsService {
     load()
     {

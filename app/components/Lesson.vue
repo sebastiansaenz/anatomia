@@ -5,10 +5,10 @@
                 @tap="$navigateBack" />
         </ActionBar>
         <AbsoluteLayout ref="rootLayout">
-            <ListView for="chapter in lesson.chapters" @itemTap="onItemTap"
+            <ListView for="chapter in lesson.chapters" @itemTap="onItemTap" class="list-group"
                 left="10" top="10" height="97%" width="100%" marginBottom="48">
                 <v-template>
-                    <Label :text="chapter.name" @tap="goToComponent(chapter)" />
+                    <Label :text="chapter.name" @tap="goToComponent(chapter)" class="list-group-item" />
                 </v-template>
             </ListView>
         </AbsoluteLayout>
@@ -42,10 +42,5 @@
     ActionBar {
         background-color: #53ba82;
         color: #ffffff;
-    }
-
-    ListView Label {
-        height: 48;
-        min-height: 48;
     }
 </style>
