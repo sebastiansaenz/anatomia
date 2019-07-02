@@ -20,6 +20,8 @@
 import { mapState } from 'vuex'
 import { mapActions } from 'vuex'
 
+const connectivityModule = require("tns-core-modules/connectivity");
+
     export default {
         computed: {
             ...mapState([
@@ -28,7 +30,8 @@ import { mapActions } from 'vuex'
         },
         data() {
             return {
-                loading: false
+                loading: false,
+                checkInternet: ["Revisa tu conexión a Internet", "Verifique sua conexão com a internet", "Check your internet connection"]
             };
         },
         methods: {
@@ -36,10 +39,21 @@ import { mapActions } from 'vuex'
                 'loadLessons'
             ]),
             goToLessons() {
-                if (this.lessons.length == 0) {
+                let offline = connectivityModule.connectionType.none == connectivityModule.getConnectionType();
+                if (offline) {
+                    alert({
+                        title: this.$i18n.locale == 'es' ? this.checkInternet[0] : this.$i18n.locale == 'pt' ? this.checkInternet[1] : this.checkInternet[2],
+                        okButtonText: "OK"
+                    })
+                } else if (this.lessons.length == 0) {
                     this.loading = true
                     this.loadLessons()
                     .then(r => {
+                        alert({
+                            title: this.lessons,
+                            message: "Your message",
+                            okButtonText: "Your OK button text"
+                        })
                         this.loading = false
                         this.$navigateTo(this.$routes.Lessons, {
                             props: {
