@@ -28,13 +28,14 @@
             }
         },
         props: {
-            questions: []
+            questions: [],
+            lesson: {}
         },
         data() {
             return {
                 buttonClass: 'btn btn-gray btn-rounded-sm m-x-10 m-y-15',
                 questionNumber: 0,
-                score: []
+                score: [0]
             };
         },
         methods: {
@@ -56,7 +57,8 @@
                 } else if (this.questionNumber == this.questions.length - 1) {
                     this.$navigateTo(this.$routes.QuizComplete, {
                         props: {
-                            score: this.totalScore
+                            score: this.totalScore,
+                            lesson: this.lesson
                         }
                     })
                 } else {

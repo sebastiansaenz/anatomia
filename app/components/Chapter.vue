@@ -22,7 +22,8 @@
 <script>
     export default {
         props: {
-            chapter: {}
+            chapter: {},
+            lesson: {}
         },
         data() {
             return {
@@ -49,7 +50,8 @@
                 } else if (this.screenNumber == this.chapter.screens.length - 1) {
                     this.$navigateTo(this.$routes.Quiz, {
                         props: {
-                            questions: this.chapter.questions
+                            questions: this.chapter.questions,
+                            lesson: this.lesson
                         }
                     })
                 } else {

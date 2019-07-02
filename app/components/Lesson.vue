@@ -2,7 +2,7 @@
     <Page>
         <ActionBar :title="lesson.name">
             <NavigationButton :text="$t('actionbar:back')" android.systemIcon="ic_menu_back"
-                @tap="$navigateBack" />
+                @tap="goToLessons" />
         </ActionBar>
         <AbsoluteLayout ref="rootLayout">
             <ListView for="chapter in lesson.chapters" @itemTap="onItemTap" class="list-group"
@@ -16,7 +16,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
     export default {
+        computed: {
+            ...mapState([
+                'lessons'
+            ])
+        },
         props: {
             lesson: {}
         },
@@ -29,9 +36,17 @@
             goToComponent(chapter) {
                 this.$navigateTo(this.$routes.Chapter, {
                     props: {
-                        chapter: chapter
+                        chapter: chapter,
+                        lesson: this.lesson
                     }
-                });
+                })
+            },
+            goToLessons() {
+                this.$navigateTo(this.$routes.Lessons, {
+                    props: {
+                        lessons: this.lessons
+                    }
+                })
             }
         }
     };

@@ -3,7 +3,7 @@
         <GridLayout columns="*" rows="*">
             <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center">
                 <Label class="label" :text="puntaje" />
-                <Button class="button" :text="$t('quizcomplete:button:backtolesson')" @tap="goToQuiz" />
+                <Button class="button" :text="$t('quizcomplete:button:backtolesson')" @tap="goToLesson" />
             </FlexboxLayout>
         </GridLayout>
     </Page>
@@ -11,15 +11,22 @@
 
 <script>
     export default {
-        props: ['score'],
+        props: {
+            score: Number,
+            lesson: {}
+        },
         data() {
             return {
 
             }
         },
         methods: {
-            goToQuiz() {
-                this.$navigateBack()
+            goToLesson() {
+                this.$navigateTo(this.$routes.Lesson, {
+                    props: {
+                        lesson: this.lesson
+                    }
+                })
             }
         }
     };
