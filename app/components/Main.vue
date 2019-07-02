@@ -49,11 +49,6 @@ const connectivityModule = require("tns-core-modules/connectivity");
                     this.loading = true
                     this.loadLessons()
                     .then(r => {
-                        alert({
-                            title: this.lessons,
-                            message: "Your message",
-                            okButtonText: "Your OK button text"
-                        })
                         this.loading = false
                         this.$navigateTo(this.$routes.Lessons, {
                             props: {
