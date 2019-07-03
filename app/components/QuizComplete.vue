@@ -2,7 +2,8 @@
     <Page actionBarHidden="true">
         <GridLayout columns="*" rows="*">
             <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center">
-                <Label class="label" :text="puntaje" />
+                <Label class="label" :text="Math.round(score) + '%'" />
+                <Label class="label" :text="score > 60 ? $t('quizcomplete:text:welldone') : $t('quizcomplete:text:practice')" />
                 <Button class="button" :text="$t('quizcomplete:button:backtolesson')" @tap="goToLesson" />
             </FlexboxLayout>
         </GridLayout>
@@ -33,7 +34,6 @@
 </script>
 
 <style scoped>
-
     ActionBar {
         background-color: #53ba82;
         color: #ffffff;

@@ -7,5 +7,7 @@
     "general:button:next": "Next",
     "general:button:finish": "Finish",
     "quiz:button:quiz": "Quiz!",
-    "quizcomplete:button:backtolesson": "Back to the lesson"
+    "quizcomplete:button:backtolesson": "Back to the lesson",
+    "quizcomplete:text:welldone": "Well done!",
+    "quizcomplete:text:practice": "Keep practicing!"
 }

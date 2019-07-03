@@ -2,12 +2,13 @@ import Vue from 'nativescript-vue'
 import Main from './components/Main'
 import store from './store';
 import routes from '~/router'
-import VueDevtools from 'nativescript-vue-devtools'
 
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
+
 import { languages } from './i18n/index.js'
 import { defaultLocale } from './i18n/index.js'
+
 const messages = Object.assign(languages)
 
 var i18n = new VueI18n({
@@ -16,6 +17,7 @@ var i18n = new VueI18n({
   messages
 })
 
+import VueDevtools from 'nativescript-vue-devtools'
 if(TNS_ENV !== 'production') {
   Vue.use(VueDevtools)
 }
