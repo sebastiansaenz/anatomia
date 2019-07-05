@@ -4,14 +4,14 @@
           <NavigationButton :text="$t('actionbar:back')" android.systemIcon="ic_menu_back" @tap="goBack"/>
         </ActionBar>
         <DockLayout stretchLastChild="false">
-            <StackLayout dock="top">
+            <GridLayout rows="auto" dock="top">
                 <Label class="h2 m-y-15 m-x-15" :text="questions[questionNumber].name" />
-                <ListView ref="listView" class="m-l-10 m-y-15 list-group" for="answer in answers" @itemTap="selectAnswer" width="100%">
+                <ListView ref="listView" class="m-l-10 m-y-15 list-group" height="80%" for="answer in answers" @itemTap="selectAnswer" width="100%">
                     <v-template>
                         <Label :text="answer.name" :class="$index == currentSelected[questionNumber] ? 'selected list-group-item' : 'list-group-item'"/>
                     </v-template>
                 </ListView>
-            </StackLayout>
+            </GridLayout>
             <Button dock="bottom" :text="questionNumber == questions.length - 1 ? $t('general:button:finish') : $t('general:button:next')" :class="buttonClass" @tap="nextQuestion"/>
         </DockLayout>
     </Page>

@@ -26,6 +26,11 @@
                 this.$navigateTo(this.$routes.Lesson, {
                     props: {
                         lesson: this.lesson
+                    },
+                    // backstackVisible: false,
+                    // clearHistory: true,
+                    transition: {
+                        name: 'slideBottom'
                     }
                 })
             }

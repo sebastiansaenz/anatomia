@@ -2,7 +2,7 @@
     <Page>
         <ActionBar :title="lesson.name">
             <NavigationButton :text="$t('actionbar:back')" android.systemIcon="ic_menu_back"
-                @tap="goToLessons" />
+                @tap="goBack" />
         </ActionBar>
         <AbsoluteLayout ref="rootLayout">
             <ListView for="chapter in lesson.chapters" @itemTap="onItemTap" class="list-group"
@@ -41,11 +41,13 @@ import { mapState } from 'vuex'
                     }
                 })
             },
-            goToLessons() {
+            goBack() {
                 this.$navigateTo(this.$routes.Lessons, {
                     props: {
                         lessons: this.lessons
-                    }
+                    },
+                    backstackVisible: false,
+                    clearHistory: true
                 })
             }
         }
