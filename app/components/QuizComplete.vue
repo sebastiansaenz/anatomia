@@ -27,8 +27,7 @@
                     props: {
                         lesson: this.lesson
                     },
-                    // backstackVisible: false,
-                    // clearHistory: true,
+                    clearHistory: true,
                     transition: {
                         name: 'slideBottom'
                     }

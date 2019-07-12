@@ -1,7 +1,9 @@
 <template>
     <Page>
         <ActionBar :title="lesson.name">
-            <NavigationButton :text="$t('actionbar:back')" android.systemIcon="ic_menu_back"
+            <ActionItem :text="$t('actionbar:back')"
+                android.systemIcon="ic_menu_back"
+                ios.position="left"
                 @tap="goBack" />
         </ActionBar>
         <AbsoluteLayout ref="rootLayout">
