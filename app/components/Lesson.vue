@@ -1,10 +1,16 @@
 <template>
     <Page>
         <ActionBar :title="lesson.name">
-            <ActionItem :text="$t('actionbar:back')"
+            <NavigationButton
+                v-if="isAndroid"
                 android.systemIcon="ic_menu_back"
+                @tap="goBack" />
+            <ActionItem
+                v-else
+                :text="$t('actionbar:back')"
                 ios.position="left"
                 @tap="goBack" />
+
         </ActionBar>
         <AbsoluteLayout ref="rootLayout">
             <ListView for="chapter in lesson.chapters" @itemTap="onItemTap" class="list-group"
@@ -19,6 +25,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { isAndroid } from 'tns-core-modules/platform'
 
     export default {
         computed: {
@@ -31,7 +38,7 @@ import { mapState } from 'vuex'
         },
         data() {
             return {
-
+                isAndroid,
             }
         },
         methods: {
